@@ -1,0 +1,15 @@
+{* Latte template *}
+
+{block content}
+<div n:if="$images->count() == 0">
+    nejsou nahrany zadne obrazky
+    
+
+</div>
+<div>
+    
+    <ul n:foreach="$images as $image">
+        <li><img src="{$basePath}{$image->cesta_k_souboru}" width="500px"/></li>
+    </ul>
+
+</div>

@@ -1,0 +1,16 @@
+{* Latte template *}
+
+{block content}
+
+<div class="aktEdit" n:foreach="$a as $aktualita">
+    
+    <h2>{$aktualita->title}</h2>
+    <div>{$aktualita->created_at}</div>
+    <div class="aktText">{$aktualita->text}</div>
+    <a n:href="delete, $aktualita->id"> <span class="glyphicon glyphicon-trash"></span> </a>
+    <a n:href="edit, $aktualita->id"> <span class="glyphicon glyphicon-wrench"></span> </a>
+    
+    <hr>
+    
+</div>
+ {control vp}

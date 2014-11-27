@@ -1,0 +1,14 @@
+{* Latte template *}
+
+{block content}
+
+<title n:block=title>Aktuality</title>
+
+<div n:foreach="$a as $akt">
+   
+    <h2>{$akt->title}</h2>
+    <div>{$akt->created_at}</div>
+    <div>{$akt->text}</div>
+    <hr>
+</div>
+{control vp}    

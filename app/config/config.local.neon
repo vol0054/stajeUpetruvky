@@ -1,0 +1,9 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=localhost;dbname=konina'
+	user: root
+	password:
+	options:
+		lazy: yes

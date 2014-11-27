@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29.7.2014, 16:33:35
+    Author     : KytaVeprova
+*/
+body{
+    color:black;
+    background-image: url(../../images/pozadi.png);
+    
+    background-attachment: fixed;
+}
+.col-md-1 ul{
+    list-style-type: none;
+}
+.col-md-9{
+    background-color: white;
+    //width: 1000px;
+    //height: 500px;
+}
+ul{
+    list-style-type: none;
+}
+.aktEdit{
+    margin: 30px;
+}
+.aktEdit span{
+    float:right;
+    margin-right:  10px; 
+}
+.nav ul{
+    
+}
