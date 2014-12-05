@@ -5,4 +5,7 @@
   -o-background-size: cover;
   background-size: cover;
 }
+.border {
+  border: dashed 1px red;
+}
 /*# sourceMappingURL=variables.css.map */

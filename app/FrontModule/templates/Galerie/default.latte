@@ -1,6 +1,6 @@
 {* Latte template *}
 {block head}
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
 <link rel="stylesheet" href="css/galerie.css">
@@ -42,15 +42,15 @@
     </div>
 </div>
 
-
-
-
+<div class="link">
     
-<div id="links" n:foreach="$images as $image" >
-    <a  href="{$basePath}{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
-        <img src="{$basePath}{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px">
-    </a>
+	
+	    <a n:foreach="$images as $image"  href="{$basePath}{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
+		<img src="{$basePath}{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
+	    </a>
+    
 </div>
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>

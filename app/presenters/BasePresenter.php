@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use Nette,
 	App\Model,
-	App\Components;
+	App\components;
 
 
 /**
@@ -22,16 +22,15 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     
     public function beforeRender() {
         parent::beforeRender();
-        $this->template->menuItems=array(
+	$this->template->menuItems=[
             'Uvodem'=>'Homepage:',
             'Co nabizime'=>'Nabidka:',
             'Aktuality'=>'Aktuality:',
             'Nasi konici'=>'Konici:',
             'Galerie'=>'Galerie:',
             'Kontakt'=>'Kontakt:',
-            
-            
-        );
+        ];
+        
 	$this->AktualityModel = new \App\Model\AktualityModel($this->database);
         
     }
@@ -42,15 +41,20 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
             $this->redirect('this');
     }
     
-    public function createComponentAktuality(){
-	return new Components\aktualityControl($this->AktualityModel);
+    protected function createComponentAktuality(){
+	$aktuality = new components\Aktuality\AktualityControl($this->AktualityModel);
+	return $aktuality;
     }
-    
-    
-
-
+    protected function createComponentProdej(){
+	return new components\Prodeje\ProdejControl($this->AktualityModel);
+    }
+    protected function createComponentSlideshow(){
+	return new components\Slideshow\SlideshowControl();
+    }
+    protected function createComponentNavigation(){
+	return new components\Navigation\NavigationControl();
 	
-    
+    }
     
     
 }

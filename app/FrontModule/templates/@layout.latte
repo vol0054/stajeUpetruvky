@@ -24,10 +24,6 @@
 
 <body>
 	<script> document.documentElement.className+=' js' </script>
-        <script type="text/javascript">$('.carousel').carousel({
-            interval: 10000;
-            wrap
-        })</script>
 
 	
         
@@ -51,82 +47,23 @@
                 
             </header>
                 <nav class="" role="">
-                    <ul class="" n:foreach="$menuItems as $item => $link">
-
-                        <li {ifCurrent $link} class="aktivni"{/ifCurrent}>
-                            
-                            <a n:href="$link">{$item}</a>
-                        </li>
-                    </ul>
-                    
-                           
-                        
-                </nav>
-            <div class="slideshow">
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="item active">
-            <img src="{$basePath}/images/kon1.png" alt="kun">
-          <div class="carousel-caption">
-            Josef
-          </div>
-        </div>
-        <div class="item">
-          <img src="{$basePath}/images/kon2.png" alt="...">
-          <div class="carousel-caption">
-            Quasimil
-          </div>
-        </div>
-          <div class="item">
-          <img src="{$basePath}/images/kon3.png" alt="...">
-          <div class="carousel-caption">
-            ...
-          </div>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
-    </div>
-                   
-		
-            </div>
+		    <ul class="" n:foreach="$menuItems as $item => $link">
+			<li {ifCurrent $link} class="aktivni"{/ifCurrent}>
+			    <a n:href="$link">{$item}</a>
+			</li>
+		    </ul>       
+		</nav>
+			
+		{control slideshow}	
             
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="menu">
+                            <div class="sidebox">
+                            
+				{control aktuality}
                               
-                              <div class="aktuality">
-				  
-                              <h1> Aktuality</h1>
-			      
-                              <div n:foreach="$aktuality as $aktualita">
-                                  <h2>{$aktualita->title}</h2>
-                                  <div>{$aktualita->created_at}</div>
-                                  <div>{$aktualita->text}</div>
-                              </div>
-                              </div>
-                              <div class="prodej">
-                              <h1>Prodej</h1>
-                              <div n:foreach="$prodeje as $prodej">
-                                  <h2>{$prodej->title}</h2>
-                                  <div>{$prodej->created_at}</div>
-                                  <div>{$prodej->text}</div>
-                              </div>
-                              </div>
+				{control prodej}
+			    
                             </div>
                         </div>    
                         <div class="col-md-pull-8">

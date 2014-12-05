@@ -1,0 +1,8 @@
+<div class="prodej">
+    <h1>Prodej</h1>
+	<div n:foreach="$prodeje as $prodej">
+		<h2>{$prodej->title}</h2>
+                <div>{$prodej->created_at}</div>
+                <div>{$prodej->text}</div>
+        </div>
+</div>

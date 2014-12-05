@@ -15,7 +15,4 @@ class AktualityModel extends BaseModel{
 	return $this->database->table('prodej')->order('created_at DESC')->limit(1);
     }
     
-    
-    
-    
 }

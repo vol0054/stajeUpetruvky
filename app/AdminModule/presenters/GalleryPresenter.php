@@ -6,7 +6,7 @@ use Brabijan;
 
 class GalleryPresenter extends BasePresenter{
     
-    /** @var @inject */
+    
     public $upload;
     
     public function renderDefault(){

@@ -1,8 +1,9 @@
 <?php
-namespace \App\Components;
-use \App\Model;
+namespace App\components\Aktuality;
+use Nette\Application\UI\Control;
+use App\Model;
 
-class aktualityControl extends \Nette\Application\UI\Control{
+class aktualityControl extends Control{
     
     /** @var \App\Model\AktualityModel; */
     private $AktualityModel;
@@ -17,9 +18,9 @@ class aktualityControl extends \Nette\Application\UI\Control{
     
     
     public function render(){
-	$template->setFile(__DIR__ . '/Aktuality.latte');
+	$this->template->setFile(__DIR__.'/Aktuality.latte');
 	$this->template->AktualityModel = $this->AktualityModel;
-	$this->template->Aktuality = $this->aktuality;
+	$this->template->aktuality = $this->AktualityModel->getLastAkt();
 	$this->template->render();
     }
 }

@@ -5,6 +5,9 @@
   -o-background-size: cover;
   background-size: cover;
 }
+.border {
+  border: dashed 1px red;
+}
 body {
   background-image: url('../images/pozadi.png');
   background-attachment: fixed;
@@ -63,19 +66,16 @@ article {
   height: 820px;
   width: 600px;
 }
-.menu {
+.sidebox {
   overflow: auto;
   height: 822px;
-  width: 200px;
-  margin-left: 30px;
+  width: 220px;
+  margin-left: 45px;
   margin-right: 25px;
 }
-.menu h2 {
+.sidebox h2 {
   text-decoration: underline;
   font-size: 37px;
-}
-.prodej {
-  margin-top: 0px;
 }
 .multimedia {
   float: right;
@@ -100,20 +100,20 @@ h1 {
   margin-right: 25px;
   color: #ffffff;
 }
-#image {
-  border: 4px #C3c3c3 solid;
-  height: 500px;
-  width: 640px;
+/*#image{
+    border: 4px #C3c3c3 solid;
+    height: 500px;
+    width: 640px;
 }
-#image img {
-  height: 500px;
-  width: 640px;
+#image img{
+    height: 500px;
+    width: 640px;
 }
-.thumb {
-  height: 60px;
-  width: 80px;
-  float: left;
-  margin-right: 10px;
-  margin-top: 10px;
-}
+.thumb{
+    height: 60px;
+    width: 80px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+}*/
 /*# sourceMappingURL=style.css.map */
