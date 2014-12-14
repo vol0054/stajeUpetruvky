@@ -1,8 +1,8 @@
 {* Latte template *}
 {block head}
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/south-street/jquery-ui.css" id="theme">
+<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="css/galerie.css">
 {/block}
 {block content}
@@ -13,6 +13,7 @@
     <div class="slides"></div>
     <!-- Controls for the borderless lightbox -->
     <h3 class="title"></h3>
+    <h4 class="description"></h4>
     <a class="prev">‹</a>
     <a class="next">›</a>
     <a class="close">×</a>
@@ -44,11 +45,15 @@
 
 <div class="link">
     
-	
-	    <a n:foreach="$images as $image"  href="{$basePath}{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
+    <ul>
+	<li n:foreach="$galleries as $gallery">
+	    <h2>{$gallery->nazev}</h2>
+	    <div>{$gallery->popis}</div>
+	    <a n:foreach="$gallery->related('obrazek') as $image" href="{$basePath}{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
 		<img src="{$basePath}{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
-	    </a>
-    
+	    </a>    
+	</li>
+    </ul>
 </div>
 
 

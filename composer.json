@@ -20,11 +20,14 @@
 		"dg/adminer-custom": "~1.5",
 		"nasext/visual-paginator": "dev-master",
 		"kdyby/facebook": "dev-master",
+		"kollarovic/thumbnail": "dev-master",
 		"brabijan/images": "dev-master",
-		"kollarovic/thumbnail": "dev-master"
+		"o5/grido": "dev-master"
+		
 	},
 	"require-dev": {
 		"nette/tester": "~1.0"
+		
 	},
 	"minimum-stability": "stable"
 }

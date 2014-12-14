@@ -55,6 +55,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	return new components\Navigation\NavigationControl();
 	
     }
+    protected function createComponentFooter(){
+	return new components\Footer\FooterControl();
+	
+    }
+    
     
     
 }
