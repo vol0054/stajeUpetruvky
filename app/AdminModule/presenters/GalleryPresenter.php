@@ -4,6 +4,7 @@ namespace App\AdminModule\presenters;
 
 use Nette\Application\UI\Form;
 use Nette\Utils\Image;
+use App\components\forms\SignInFormFactory;
 
 class GalleryPresenter extends BasePresenter{
     
@@ -50,8 +51,8 @@ class GalleryPresenter extends BasePresenter{
 	
         $form->addText('nazev','nazev obrazku');
 	$form->addText('popis','popis obrazku');
-	$form->addHidden('galleryId');
-	$form->addUpload('file','soubor:');
+	
+	$form->addUpload('file','obrazek');
         $form->addSubmit('submit','Nahrat');
         
         
@@ -61,8 +62,38 @@ class GalleryPresenter extends BasePresenter{
     
     public function NewPictureSuccess($form){
         $values = $form->getValues();
+	try{
+	    $file = $values->file;
+	    if($file->isImage() AND $file->isOk()){
+		
+		$pripona = pathinfo($values['file']->getSanitizedName(), PATHINFO_EXTENSION);
+		$nazev=$values->nazev.'.'.$pripona;
+		$image = $values['file']->toImage();
+		$file->move(WWW_DIR . '/gallery/'.$nazev);
+		
+		
+		
+	    }
+	} catch (Exception $ex) {
+	    $form->addError($ex->getMessage());
+	}
 	
 	
+	/*insert do db*/
+	$this->database->table('obrazek')->insert([
+	    'id_galerie' => '1',
+	    'nazev' => $values->nazev,
+	    'popis' => $values->popis,
+	    //'cesta_k_souboru' => $nazev,
+	]);
+	
+	$this->redirect('this');
+    }
+    
+    public function createComponentSignInForm(){
+	$f = (new SignInFormFactory)->create();
+	//$f['username']->caption= 'novy nazev';
+	return $f;
     }
     
     

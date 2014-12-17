@@ -20,7 +20,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         $this->database=$database;
     }
     
-    public function beforeRender() {
+    protected function beforeRender() {
         parent::beforeRender();
 	$this->template->menuItems=[
             'Uvodem'=>'Homepage:',
@@ -32,7 +32,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         ];
         
 	$this->AktualityModel = new \App\Model\AktualityModel($this->database);
-        
+        if($this->isAjax()) {
+			$this->invalidateControl('flash');
+	}
     }
     
     public function handleLogout() {
