@@ -5,7 +5,7 @@ namespace App\Model;
 use Nette,
 	Nette\Utils\Strings,
 	Nette\Security\Passwords;
-
+use Tracy\Debugger;
 
 /**
  * Users management.
@@ -47,17 +47,19 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		} elseif (!Passwords::verify($password, $row[self::COLUMN_PASSWORD_HASH])) {
 			throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 
+			
 		} elseif (Passwords::needsRehash($row[self::COLUMN_PASSWORD_HASH])) {
 			$row->update(array(
-				self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
+			    self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
 			));
 		}
 
 		$arr = $row->toArray();
+		
 		unset($arr[self::COLUMN_PASSWORD_HASH]);
 		return new Nette\Security\Identity($row[self::COLUMN_ID], $row[self::COLUMN_ROLE], $arr);
 	}
-
+	
 
 	/**
 	 * Adds new user.
@@ -72,5 +74,5 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 			self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
 		));
 	}
-
+	
 }

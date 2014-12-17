@@ -28,7 +28,7 @@
 	
         
         <div class="kontejner">
-            <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+            
         
             <header>
                 <a href="#"><img src="{$basePath}/images/logo.png" alt=""></a>  
@@ -37,7 +37,7 @@
                 {else}
                     <ul class="nav navbar-nav navbar-right">
                         
-                        <li><a n:href="Homepage:">Jses Prihlasen {$user->id}</a></li>
+                        <li><a n:href="Homepage:">Jses Prihlasen {$user->identity->username}</a></li>
                         <li class="dropdown">
                             <li><a n:href="logout!">Odhlásit</a></li>
                             
@@ -68,7 +68,7 @@
                         </div>    
                         <div class="col-md-pull-8">
                             <article>
-                                
+                                <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
 				{include content}
                             
                             </article>

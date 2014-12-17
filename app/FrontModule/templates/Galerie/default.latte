@@ -49,8 +49,8 @@
 	<li n:foreach="$galleries as $gallery">
 	    <h2>{$gallery->nazev}</h2>
 	    <div>{$gallery->popis}</div>
-	    <a n:foreach="$gallery->related('obrazek') as $image" href="{$basePath}{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
-		<img src="{$basePath}{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
+	    <a n:foreach="$gallery->related('obrazek') as $image" href="{$basePath}/gallery/{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
+		<img src="{$basePath}/gallery/{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
 	    </a>    
 	</li>
     </ul>
