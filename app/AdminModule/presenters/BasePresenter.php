@@ -4,20 +4,13 @@ namespace App\AdminModule\Presenters;
 
 abstract class BasePresenter extends \App\presenters\BasePresenter{
     
-    protected function startup() {
-		parent::startup();
-	}
-    protected function beforeRender()	{
-		if($this->isAjax()) {
-			$this->invalidateControl('flash');
-		}
-	
-		$this->template->identity = $this->user->identity;
-	}
-    public function handleSignOut()
+    public function startup()
     {
-        $this->getUser()->logout();
-        $this->redirect('Sign:in');
+        parent::startup();
+    }
+    
+    public function beforeRender() {
+        $this->template->identity = $this->user->identity;
     }
     
 }

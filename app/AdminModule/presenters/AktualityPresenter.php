@@ -17,7 +17,7 @@ use Nette,
         Nette\Utils\Paginator;
 use NasExt;
         
-class AktualityPresenter extends HomepagePresenter{
+class AktualityPresenter extends SecuredPresenter{
     
     
     public function createComponentNovAktForm(){

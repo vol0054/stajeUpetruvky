@@ -6,7 +6,7 @@ use Nette\Application\UI\Form;
 use Nette\Utils\Image;
 use App\components\forms\SignInFormFactory;
 
-class GalleryPresenter extends BasePresenter{
+class GalleryPresenter extends SecuredPresenter{
     
     public function renderDefault(){
         $gallery = $this->template->galleries = $this->database->table('galerie');
