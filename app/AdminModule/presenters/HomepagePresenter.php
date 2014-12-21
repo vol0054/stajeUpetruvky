@@ -6,6 +6,8 @@ use Nette\Utils\Validators;
 
 class HomepagePresenter extends SecuredPresenter{
     
+    
+    
     public function renderDefault(){
         
     }

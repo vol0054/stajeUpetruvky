@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="author" content="Kashpi.cz; mailto:michal@kashpi.cz" />
+		<meta name="author" content="" />
 		<meta name="robots" content="{$robots}" n:ifset="$robots">
 		
 		<link rel="shortcut icon" href="{$basePath}/images/favicon.ico"/>
@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="{$baseUri}/js/bootstrap.js"></script>
 		
 		<style type="text/css">
-			body {
+body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
@@ -62,7 +62,7 @@
 		<div class="container">
 			{form loginForm, class=>'form-signin', role=>'form'}
 				<h2 class="form-signin-heading">Přihlášení</h2>
-				{input username, class=>'form-control', placeholder=>'username', autofocus}
+				{input username, class=>'form-control', placeholder=>'Jméno', autofocus}
 				{input password class=>'form-control', placeholder=>'Heslo'}
 				{input Submit class=>'btn btn-lg btn-primary btn-block'}
 			{/form}

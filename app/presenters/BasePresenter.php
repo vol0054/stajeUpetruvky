@@ -33,7 +33,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         
 	$this->AktualityModel = new \App\Model\AktualityModel($this->database);
         if($this->isAjax()) {
-			$this->invalidateControl('flash');
+            $this->invalidateControl('flash');
 	}
     }
     

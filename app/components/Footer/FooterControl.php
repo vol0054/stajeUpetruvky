@@ -15,4 +15,5 @@ class FooterControl extends Control{
 	$this->template->render();
     }
     
+    
 }

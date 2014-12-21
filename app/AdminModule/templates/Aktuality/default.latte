@@ -1,0 +1,27 @@
+{* Latte template *}
+
+{block content}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        
+    </div>
+    <div class="panel-body">
+        <a n:href="Aktuality:vytvor"> nova aktualita </a>
+        
+    </div>
+                    
+</div>
+
+<div class="aktEdit" n:foreach="$a as $aktualita">
+    
+    <h2>{$aktualita->title}</h2>
+    <div>{$aktualita->created_at}</div>
+    <div class="aktText">{$aktualita->text}</div>
+    <a n:href="delete, $aktualita->id"> <button type="button" class="btn-xs btn-danger">Odstran</button> </a>
+    <a n:href="edit, $aktualita->id"> <button type="button" class="btn-xs btn-primary">Uprav</button> </a>
+    
+    <hr>
+    
+</div>
+ {control vp}

@@ -44,14 +44,15 @@ class AuthPresenter extends BasePresenter{
 		}
 	}
 
-  public function actionLogout() {
-    $this->user->logout(TRUE);
-    $this->flashMessage('Byl jsi odhlášen.');
-    if($this->isAjax()) {
-      $this->invalidateControl('logform');
-      $this->invalidateControl('page');
+    public function actionLogout() {
+        $this->user->logout(TRUE);
+        $this->flashMessage('Byl jsi odhlášen.');
+        if($this->isAjax()) {
+            $this->invalidateControl('logform');
+            $this->invalidateControl('page');
+        }else {
+            $this->redirect('Auth:'); 
+        }
     }
-    else $this->redirect('Auth:'); 
-	}
 }
 

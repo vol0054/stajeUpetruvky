@@ -24,7 +24,7 @@ class AktualityPresenter extends SecuredPresenter{
         $form= new Form();
         //$form->addHidden('id');
         $form->addText('title','Nadpis');
-        $form->addTextArea('text','txt nove aktuality:')
+        $form->addTextArea('text','text nove aktuality:')
                 ->addRule(Form::MAX_LENGTH, 'text musí mít alespoň %d znaky', 255);
         $form->addSubmit('send', 'Odeslat');
         
@@ -52,7 +52,7 @@ class AktualityPresenter extends SecuredPresenter{
     }
     
     
-    public function renderUprav(){
+    public function renderDefault(){
         //$this->template->a =  $this->database->table('aktuality')->order('created_at DESC')->page($page, 10);
         $list = $this->database->table('aktuality');
 	$listCount = $list->count();
@@ -65,8 +65,7 @@ class AktualityPresenter extends SecuredPresenter{
 		$aktuality = $list->limit($paginator->itemsPerPage, $paginator->offset);
 		$this->template->a = $aktuality;
 	
-        //novy template - uprav.... abych nemusel delat novy presenter
-        $this->view = 'uprav';
+        
         
         
         
@@ -90,7 +89,7 @@ class AktualityPresenter extends SecuredPresenter{
         $this->database->query('DELETE FROM aktuality WHERE id='.$id);
         
         $this->flashMessage('Aktualita byla úspěšně smazána!.', 'alert alert-success');
-        $this->redirect('uprav');
+        $this->redirect('edit');
         
         
     }
