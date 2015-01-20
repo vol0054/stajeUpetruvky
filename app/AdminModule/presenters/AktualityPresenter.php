@@ -48,13 +48,13 @@ class AktualityPresenter extends SecuredPresenter{
         }
 
         $this->flashMessage('Aktualita byla úspěšně publikována.', 'alert alert-success');
-        $this->redirect('uprav');
+        $this->redirect('default');
     }
     
     
     public function renderDefault(){
         //$this->template->a =  $this->database->table('aktuality')->order('created_at DESC')->page($page, 10);
-        $list = $this->database->table('aktuality');
+        $list = $this->database->table('aktuality')->order('created_at DESC');
 	$listCount = $list->count();
 	
 	/** @var NasExt\Controls\VisualPaginator $vp */
@@ -88,8 +88,8 @@ class AktualityPresenter extends SecuredPresenter{
         }
         $this->database->query('DELETE FROM aktuality WHERE id='.$id);
         
-        $this->flashMessage('Aktualita byla úspěšně smazána!.', 'alert alert-success');
-        $this->redirect('edit');
+        $this->flashMessage('Aktualita byla úspěšně smazána!.', 'alert alert-danger');
+        $this->redirect('default');
         
         
     }
