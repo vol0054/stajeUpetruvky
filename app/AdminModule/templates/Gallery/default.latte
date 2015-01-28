@@ -1,13 +1,15 @@
 {* Latte template *}
 
 {block content}
-{if $galleries->count() == 0}
-    Nemate vytvorenou zadnou galerii!
+{if $images->count() == 0}
+    nejsou nahrány žádné obrázky!.
     
-    {control newGalleryForm}
+    <h3>nahrat obrazky</h3>
+    {control newPicture}
+    
     
 {else}
-    <div>
+    {*<div>
         <h1>Vase galerie:</h1>
             <ol>
                 <li n:foreach="$galleries as $gallery">
@@ -20,9 +22,10 @@
 
                 </li>
             </ol>
-    </div>        
-    <div class="novaGalerie">
-        <h2>Vytvor si novou galerii:</h2>
-        {control newGalleryForm}
-    </div>
+    </div>*}  
+    <h2>Novy obrazek</h2>
+    {control newPicture}
+    {control basicDataGrid}
+    
+    
 {/if}

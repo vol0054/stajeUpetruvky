@@ -1,0 +1,9 @@
+.link ul {
+  list-style-type: none;
+  float: left;
+  padding: 4px;
+}
+.link li {
+  text-decoration-style: none;
+}
+/*# sourceMappingURL=galerie.css.map */

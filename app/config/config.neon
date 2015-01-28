@@ -25,3 +25,5 @@ services:
 	- App\Model\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
+	- App\Model\GalleryModel
+	- App\Model\AktualityModel

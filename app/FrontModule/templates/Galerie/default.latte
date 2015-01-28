@@ -1,9 +1,9 @@
 {* Latte template *}
 {block head}
-
+{* nefunguje offline !!! @TODO if(offline){link na stylesheet v www & shits}.... *}
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/south-street/jquery-ui.css" id="theme">
 <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-<link rel="stylesheet" href="css/galerie.css">
+<link rel="stylesheet" href="{$basePath}/css/galerie.css">
 {/block}
 {block content}
 
@@ -42,10 +42,17 @@
         </div>
     </div>
 </div>
-
 <div class="link">
+    <h1>Galerie</h1>
+    <ul n:foreach="$images as $image">
+        <li>
+            <a href="{$basePath}/gallery/{$image->nazev}" title="{$image->nazev}" data-gallery>
+                <img src="{$basePath}/gallery/thumb/{$image->nazev}" alt="{$image->nazev}">
+            </a>
+        </li>
+    </ul>
     
-    <ul>
+    {*<ul class="link">
 	<li n:foreach="$galleries as $gallery">
 	    <h2>{$gallery->nazev}</h2>
 	    <div>{$gallery->popis}</div>
@@ -53,7 +60,7 @@
 		<img src="{$basePath}/gallery/{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
 	    </a>    
 	</li>
-    </ul>
+    </ul>*}
 </div>
 
 

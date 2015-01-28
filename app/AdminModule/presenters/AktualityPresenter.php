@@ -1,24 +1,17 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of AktualityPresenter
- *
- * @author KytaVeprova
- */
 namespace App\AdminModule\presenters;
 use Nette,
         Nette\Application\UI\Form,
         Nette\Utils\Paginator;
 use NasExt;
-        
+use Mesour\DataGrid\NetteDbDataSource,
+	Mesour\DataGrid\Grid;
 class AktualityPresenter extends SecuredPresenter{
     
+    protected $activeSelected;
+    protected $unactiveSelected;
+    protected $deleteSelected;
     
     public function createComponentNovAktForm(){
         $form= new Form();
@@ -51,10 +44,42 @@ class AktualityPresenter extends SecuredPresenter{
         $this->redirect('default');
     }
     
+    protected function createComponentGrid($name){
+	$source = new NetteDbDataSource($this->AktualityModel->getAllAkt());
+ 
+	$source->setPrimaryKey('id'); // primary key is now used always, default is "id"
+ 
+	$grid = new Grid($this, $name);
+	$grid->setDataSource($source);
+	$grid->enablePager(20);
+	$grid->enableEditableCells();
+	
+	//$selection = $grid->enableRowSelection();
+	/*
+	$selection->addLink('Active')
+	    ->onCall[] = $this->activeSelected;
+ 
+	$selection->addLink('Unactive')
+	    ->setAjax(FALSE)
+	    ->onCall[] = $this->unactiveSelected;
+ 
+	$selection->addLink('Delete')
+	    ->setConfirm('Really delete all selected users?')
+	    ->onCall[] = $this->deleteSelected;
+	
+	$status_column = $grid->addStatus('action', 'Edit');
+	$status_column->addButton()
+	    ->setStatus('0') // show if status == 0
+	    ->setType('btn-danger')
+	    ->setClassName('ajax')
+	    ->setIcon('glyphicon-ban-circle')
+	    ->setTitle('Set as active (unactive)');*/
+	return $grid;
+    }
     
     public function renderDefault(){
-        //$this->template->a =  $this->database->table('aktuality')->order('created_at DESC')->page($page, 10);
-        $list = $this->database->table('aktuality')->order('created_at DESC');
+        
+        $list = $this->AktualityModel->getAllAkt();
 	$listCount = $list->count();
 	
 	/** @var NasExt\Controls\VisualPaginator $vp */

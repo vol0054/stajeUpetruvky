@@ -75,4 +75,10 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		));
 	}
 	
+	public function getAll()
+	{
+	    return $this->database->table(self::TABLE_NAME);
+	    
+	}
+	
 }

@@ -16,7 +16,7 @@ abstract class BasePresenter extends \App\presenters\BasePresenter{
             'Aktuality' => 'Aktuality:',
             'Galerie' => 'Gallery:',
             'Stranky' => 'Stranky:',
-            'Uzivatele' => 'Uzivatele:',
+            'Uzivatele' => 'Users:',
         ];
         
         

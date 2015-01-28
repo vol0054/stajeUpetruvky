@@ -5,12 +5,20 @@ namespace App\AdminModule\presenters;
 use Nette\Application\UI\Form;
 use Nette\Utils\Image;
 use App\components\forms\SignInFormFactory;
+use Mesour\DataGrid\NetteDbDataSource,
+	Mesour\DataGrid\Grid;
 
-class GalleryPresenter extends SecuredPresenter{
+class GalleryPresenter extends SecuredPresenter{    
+    
+    /**  
+     * @inject
+     * @var \App\Model\GalleryModel
+     */
+    public $GalleryModel;
     
     public function renderDefault(){
-        $gallery = $this->template->galleries = $this->database->table('galerie');
-        
+	
+        $this->template->images = $this->GalleryModel->getAllImages();
         
     }
     public function renderView($galleryId){
@@ -20,30 +28,8 @@ class GalleryPresenter extends SecuredPresenter{
         return $galleryId;
 	
     }
-
-    public function createComponentNewGalleryForm(){
-        
-        $form = new Form();
-        
-        $form->addText('nazev','Nazev galerie:')->setRequired();
-        $form->addText('popis','Popis galerie:');
-        $form->addSubmit('submit','vytvorit');
-        
-	$this->flashMessage('galerie byla uspesne vytvorena', 'success');
-        $form->onSuccess[] = $this->newGallerySuccess;
-	
-        return $form;
-    }
     
-    public function newGallerySuccess($form){
-        $values = $form->getValues();
-        
-        $this->database->table('galerie')->insert([
-            'nazev' => $values->nazev,
-            'popis' => $values->popis,
-        ]);
-        $this->redirect('Gallery:default');
-    }
+    
     
     public function createComponentNewPicture(){
         $form = new Form();
@@ -52,7 +38,7 @@ class GalleryPresenter extends SecuredPresenter{
         $form->addText('nazev','nazev obrazku');
 	$form->addText('popis','popis obrazku');
 	
-	$form->addUpload('file','obrazek');
+	$form->addUpload('file','obrazek',TRUE);
         $form->addSubmit('submit','Nahrat');
         
         
@@ -62,39 +48,29 @@ class GalleryPresenter extends SecuredPresenter{
     
     public function NewPictureSuccess($form){
         $values = $form->getValues();
-	try{
-	    $file = $values->file;
-	    if($file->isImage() AND $file->isOk()){
-		
-		$pripona = pathinfo($values['file']->getSanitizedName(), PATHINFO_EXTENSION);
-		$nazev=$values->nazev.'.'.$pripona;
-		$image = $values['file']->toImage();
-		$file->move(WWW_DIR . '/gallery/'.$nazev);
-		
-		
-		
-	    }
-	} catch (Exception $ex) {
-	    $form->addError($ex->getMessage());
-	}
 	
+	$this->GalleryModel->save($values);
 	
-	/*insert do db*/
-	$this->database->table('obrazek')->insert([
-	    'id_galerie' => '1',
-	    'nazev' => $values->nazev,
-	    'popis' => $values->popis,
-	    //'cesta_k_souboru' => $nazev,
-	]);
 	
 	$this->redirect('this');
     }
     
-    public function createComponentSignInForm(){
-	$f = (new SignInFormFactory)->create();
-	//$f['username']->caption= 'novy nazev';
-	return $f;
+    
+    
+    protected function createComponentBasicDataGrid($name) {
+	$source = new NetteDbDataSource($this->database->table('obrazek'));
+ 
+	$source->setPrimaryKey('id'); // primary key is now used always, default is "id"
+ 
+	$grid = new Grid($this, $name);
+ 
+	$grid->setDataSource($source);
+	$grid->enablePager(20);
+	$grid->enableEditableCells();
+	
+	
+	
+ 
+	return $grid;
     }
-    
-    
 }

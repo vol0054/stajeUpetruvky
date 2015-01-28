@@ -5,7 +5,10 @@ use App\Model;
 
 class aktualityControl extends Control{
     
-    /** @var \App\Model\AktualityModel; */
+    /** 
+     * @inject
+     * @var \App\Model\AktualityModel; 
+     */
     private $AktualityModel;
     
     /** @var string */

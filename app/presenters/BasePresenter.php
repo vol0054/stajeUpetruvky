@@ -13,8 +13,11 @@ use Nette,
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
     protected $database;
-    /** @var articleModel */
+    /** 
+     * @inject
+     * @var \App\Model\AktualityModel */
     public $AktualityModel;
+    
     
     public function __construct(Nette\Database\Context $database) {
         $this->database=$database;
@@ -31,7 +34,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
             'Kontakt'=>'Kontakt:',
         ];
         
-	$this->AktualityModel = new \App\Model\AktualityModel($this->database);
+	
         if($this->isAjax()) {
             $this->invalidateControl('flash');
 	}

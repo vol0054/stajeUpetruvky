@@ -6,7 +6,13 @@ use Nette\Utils\Paginator;
 use NasExt;
 
 class AktualityPresenter extends BasePresenter{
-  
+    
+    /**
+     * @inject
+     * @var \App\Model\AktualityModel
+     */
+    public $AktualityModel;
+    
     public function renderDefault() {
         
 	$list = $this->AktualityModel->getAllAkt();

@@ -21,12 +21,12 @@
 		"nasext/visual-paginator": "dev-master",
 		"kdyby/facebook": "dev-master",
 		"kollarovic/thumbnail": "dev-master",
-		"brabijan/images": "dev-master",
-		"o5/grido": "dev-master"
+		"mesour/datagrid": "dev-master"
 		
 	},
 	"require-dev": {
-		"nette/tester": "~1.0"
+		"nette/tester": "~1.0",
+		"nextras/datagrid": "dev-master"
 		
 	},
 	"minimum-stability": "stable"
