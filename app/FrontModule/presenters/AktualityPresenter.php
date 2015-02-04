@@ -20,7 +20,7 @@ class AktualityPresenter extends BasePresenter{
 	/** @var NasExt\Controls\VisualPaginator $vp */
 		$vp = $this['vp'];
 		$paginator = $vp->getPaginator();
-		$paginator->itemsPerPage = 3;
+		$paginator->itemsPerPage = 5;
 		$paginator->itemCount = $listCount;
 		$aktuality = $list->limit($paginator->itemsPerPage, $paginator->offset);
 		$this->template->a = $aktuality;

@@ -31,20 +31,21 @@ class GalleryModel extends BaseModel{
 		    $pripona = pathinfo($file->getSanitizedName(), PATHINFO_EXTENSION);
 		    /* pokud neni zadany nazev obrazku (ve formulari) tak je nazev obrazku stejny jako uploadovany soubor*/
 		    if(!$values->nazev){
-			$nazev = $file->getSanitizedName();
+			$nazev = pathinfo($file->getSanitizedName(),PATHINFO_FILENAME);
 		    }else{
 			$nazev= $values->nazev.'.'.$pripona;
 		    }
 
 		    $image = $file->toImage();
 		    $image->resize(100,100, Image::STRETCH|Image::SHRINK_ONLY);
-		    $image->save(WWW_DIR.'/gallery/thumb/'.$nazev);
-		    $file->move(WWW_DIR . '/gallery/'.$nazev);
+		    $image->save(WWW_DIR.'/gallery/thumb/'.$nazev.'.'.$pripona);
+		    $file->move(WWW_DIR . '/gallery/'.$nazev.'.'.$pripona);
 		    
 		    $this->database->table('obrazek')->insert([
 			'nazev' => $nazev,
 			'popis' => $values->popis,
-			'thumb_path'=> '/thumb/'.$nazev,	    
+			'path'=> '/gallery/'.$nazev.'.'.$pripona,
+			'thumb_path' => '/gallery/thumb/'.$nazev.'.'.$pripona,
 		    ]);
 
 		}

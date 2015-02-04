@@ -47,11 +47,8 @@ class GalleryPresenter extends SecuredPresenter{
     }
     
     public function NewPictureSuccess($form){
-        $values = $form->getValues();
-	
-	$this->GalleryModel->save($values);
-	
-	
+        $values = $form->getValues();	
+	$this->GalleryModel->save($values);	
 	$this->redirect('this');
     }
     
@@ -65,7 +62,7 @@ class GalleryPresenter extends SecuredPresenter{
 	$grid = new Grid($this, $name);
  
 	$grid->setDataSource($source);
-	$grid->enablePager(20);
+	$grid->enablePager(10);
 	$grid->enableEditableCells();
 	
 	

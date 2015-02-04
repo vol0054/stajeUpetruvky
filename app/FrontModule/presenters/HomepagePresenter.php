@@ -11,6 +11,11 @@ namespace App\FrontModule\Presenters;
 class HomepagePresenter extends BasePresenter
 {
     
+    public function renderDefault($title='Uvodem'){
+	
+	$this->template->Content = $this->database->table('page')->where('slug',$title)->fetch();
+	
+    }
     
     
 

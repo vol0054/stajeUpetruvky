@@ -1,1 +1,1 @@
-{"version":3,"sources":["../less/galerie.less"],"names":[],"mappings":"AAAA,KACI;EACH,qBAAA;EACA,WAAA;EACA,YAAA;;AAJD,KAMI;EACH,2BAAA","file":"/var/www/html/stajeUpetruvky/www/css/galerie.css"}
+{"version":3,"sources":["../less/galerie.less"],"names":[],"mappings":"AAAA;EACI,kBAAA;;AADJ,KAEI;EACH,qBAAA;EACA,qBAAA;;AAJD,KAOI;EACH,2BAAA;EACA,WAAA;EACA,YAAA","file":"/var/www/html/stajeUpetruvky/www/css/galerie.css"}

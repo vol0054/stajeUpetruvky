@@ -44,25 +44,17 @@
 </div>
 <div class="link">
     <h1>Galerie</h1>
-    <ul n:foreach="$images as $image">
-        <li>
-            <a href="{$basePath}/gallery/{$image->nazev}" title="{$image->nazev}" data-gallery>
-                <img src="{$basePath}/gallery/thumb/{$image->nazev}" alt="{$image->nazev}">
-            </a>
-        </li>
-    </ul>
     
-    {*<ul class="link">
-	<li n:foreach="$galleries as $gallery">
-	    <h2>{$gallery->nazev}</h2>
-	    <div>{$gallery->popis}</div>
-	    <a n:foreach="$gallery->related('obrazek') as $image" href="{$basePath}/gallery/{$image->cesta_k_souboru}" title="{$image->nazev}" data-gallery>
-		<img src="{$basePath}/gallery/{$image->cesta_k_souboru}" alt="{$image->nazev}" width="150px  ">
-	    </a>    
-	</li>
-    </ul>*}
+	<ul>
+	    <li n:foreach="$images as $image">
+		<a href="{$basePath}/{$image->path}" title="{$image->nazev}" data-gallery>
+		    <img src="{$basePath}/{$image->thumb_path}" alt="{$image->nazev}">
+		</a>
+	    </li>
+	</ul>
 </div>
-
+		    
+{control vp}
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>

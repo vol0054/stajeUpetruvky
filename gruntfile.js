@@ -1,27 +1,38 @@
 module.exports = function(grunt) {
 
-  // load all grunt tasks matching the `grunt-*` pattern
-    require('load-grunt-tasks')(grunt);
-/*
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-	// copy files downloaded by bower
-	grunt.loadNpmTasks('grunt-bowercopy');  
-*/
-	grunt.initConfig({
-    bowercopy: {
-        options: {
-            // Task-specific options go here
-            
-        },
-        your_target: {
-            // Target-specific file lists and/or options go here
-        }
-    }
-	});	
-
-  // Default task(s).
-  grunt.registerTask('default', []);
+    grunt.initConfig({
+	pkg: grunt.file.readJSON('package.json'),
+	bowercopy: {
+	    options: {
+		srcPrefix: 'bower_components'
+	    },
+	    fucks: {
+		options: {
+		    destPrefix:'www/'
+		},
+		files: {
+		    'js' : 'bootstrap/dist/js/bootstrap.min.js',
+		    'js/' : 'jquery/dist/*',
+		    'css' : 'bootstrap/dist/css/bootstrap.min.css'
+		}
+		
+	    }
+	},
+	concat: {
+	    /** veme jquery.js a hovna.js a spoji je dohromady */
+	    dist: {
+		src: ['www/js/jquery.js','www/js/testHoven.js'],
+		dest: 'www/js/test/build.js',
+	    },
+	    
+	},
+    });	
+    grunt.loadNpmTasks('grunt-bowercopy');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    
+    
+    // Default task(s).
+    grunt.registerTask('default', ['concat']);
+  
 
 };

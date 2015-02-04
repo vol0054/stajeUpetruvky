@@ -12,33 +12,25 @@ use Nette,
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+    /** @var \Nette\Database */
     protected $database;
     /** 
      * @inject
      * @var \App\Model\AktualityModel */
     public $AktualityModel;
     
+    /**
+     * @inject
+     * @var \App\Model\SlideshowModel
+     */
+    protected $SlideshowModel;
     
     public function __construct(Nette\Database\Context $database) {
         $this->database=$database;
     }
     
-    protected function beforeRender() {
-        parent::beforeRender();
-	$this->template->menuItems=[
-            'Uvodem'=>'Homepage:',
-            'Co nabizime'=>'Nabidka:',
-            'Aktuality'=>'Aktuality:',
-            'Nasi konici'=>'Konici:',
-            'Galerie'=>'Galerie:',
-            'Kontakt'=>'Kontakt:',
-        ];
-        
-	
-        if($this->isAjax()) {
-            $this->invalidateControl('flash');
-	}
-    }
+    
+    
     
     public function handleLogout() {
             $this->user->logout(TRUE);
@@ -53,6 +45,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     protected function createComponentProdej(){
 	return new components\Prodeje\ProdejControl($this->AktualityModel);
     }
+    
+    
     protected function createComponentSlideshow(){
 	return new components\Slideshow\SlideshowControl();
     }

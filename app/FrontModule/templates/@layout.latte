@@ -46,15 +46,11 @@
                 {/if}*}
                 
             </header>
-                <nav class="" role="">
-		    <ul class="" n:foreach="$menuItems as $item => $link">
-			<li {ifCurrent $link} class="aktivni"{/ifCurrent}>
-			    <a n:href="$link">{$item}</a>
-			</li>
-		    </ul>       
-		</nav>
-			
-		{control slideshow}	
+		
+		
+                {control navigation}
+		
+		{control slideshow}
             
                     <div class="row">
                         <div class="col-md-4">
